@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function FeedbackOptions({ onLeaveFeedback }) {
+export function FeedbackOptions({ onLeaveFeedback, options }) {
   return (
     <div>
-      <button type="button" name="good" onClick={onLeaveFeedback}>
-        good
-      </button>
-      <button type="button" name="neutral" onClick={onLeaveFeedback}>
-        neutral
-      </button>
-      <button type="button" name="bad" onClick={onLeaveFeedback}>
-        bad
-      </button>
+      {options.map(option => (
+        <button
+          key={option}
+          type="button"
+          name={option}
+          onClick={onLeaveFeedback}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   );
 }

@@ -8,8 +8,6 @@ export class App extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    total: 0,
-    positivePercentage: 0,
   };
 
   onLeaveFeedback = event => {
@@ -18,20 +16,14 @@ export class App extends Component {
         [event.target.name]: prevState[event.target.name] + 1,
       };
     });
+  };
 
-    this.setState(prevState => {
-      return {
-        total: prevState.good + prevState.neutral + prevState.bad,
-      };
-    });
+  getTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
 
-    this.setState(prevState => {
-      return {
-        positivePercentage: Math.round(
-          (prevState.good * 100) / prevState.total
-        ),
-      };
-    });
+  getPositivePercentage = () => {
+    return Math.round((this.state.good * 100) / this.getTotalFeedback());
   };
 
   render() {
@@ -39,13 +31,16 @@ export class App extends Component {
     return (
       <>
         <Section>Please leave feedback</Section>
-        <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
+        <FeedbackOptions
+          onLeaveFeedback={this.onLeaveFeedback}
+          options={Object.keys(this.state)}
+        />
         <Statistics
           good={good}
           neutral={neutral}
           bad={bad}
-          total={total}
-          positivePercentage={positivePercentage}
+          total={this.getTotalFeedback()}
+          positivePercentage={this.getPositivePercentage()}
         />
       </>
     );
