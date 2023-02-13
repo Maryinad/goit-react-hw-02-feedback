@@ -1,23 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Section, Btn } from './FeedbackOptions.styled';
 
 export function FeedbackOptions({ onLeaveFeedback, options }) {
   return (
-    <div>
+    <Section>
       {options.map(option => (
-        <button
-          key={option}
-          type="button"
-          name={option}
-          onClick={onLeaveFeedback}
-        >
+        <Btn key={option} type="button" name={option} onClick={onLeaveFeedback}>
           {option}
-        </button>
+        </Btn>
       ))}
-    </div>
+    </Section>
   );
 }
 
 FeedbackOptions.propTypes = {
   onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
 };
