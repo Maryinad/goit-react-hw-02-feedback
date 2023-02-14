@@ -27,7 +27,7 @@ export class App extends Component {
   };
 
   render() {
-    const { good, neutral, bad, total, positivePercentage } = this.state;
+    const { good, neutral, bad } = this.state;
     return (
       <>
         <Section>Please leave feedback</Section>

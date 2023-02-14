@@ -1,6 +1,5 @@
-import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
-import React, { Component } from 'react';
-import { Statistics } from '../Statistics/Statistics.jsx';
+import React from 'react';
+
 import { Title } from './Section.styled';
 import PropTypes from 'prop-types';
 
